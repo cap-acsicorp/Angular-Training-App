@@ -1,0 +1,167 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="container-fluid py-3">
+            <h3>User Details Form</h3>
+            <div class="row justify-content">
+                <div class="col-12">
+                    <form [formGroup]="reactiveForm" #form="ngForm" autocomplete="off">
+                        <div class="row">
+                            <div class="col mb-2">
+                                <label for="name" class="form-label">Name:</label>
+                                <input type="text" id="name" name="name" formControlName="name" placeholder="Your name"
+                                    required minlength="1" maxlength="250" class="form-control form-control-sm" autocomplete="off"
+                                    [class.is-invalid]="name.invalid && (name.dirty || name.touched)">
+                                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+                                    <div *ngIf="name.errors?.['required']">
+                                        This field is required.
+                                    </div>
+                                    <div *ngIf="name.errors?.['minlength']">
+                                        This field must have at least 1 character.
+                                    </div>
+                                    <div *ngIf="name.errors?.['maxlength']">
+                                        This field must have at most 250 characters.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-2">
+                                <label for="nickname" class="form-label">Nickname:</label>
+                                <input type="text" id="nickname" name="nickname" formControlName="nickname" autocomplete="off"
+                                    placeholder="Your nickname" maxlength="10" class="form-control form-control-sm"
+                                    [class.is-invalid]="nickname.invalid && (nickname.dirty || nickname.touched)">
+                                <div *ngIf="nickname.invalid && (nickname.dirty || nickname.touched)"
+                                    class="invalid-feedback">
+                                    <div *ngIf="nickname.errors?.['maxlength']">
+                                        This field must have at most 10 characters.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-2">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" id="email" name="email" formControlName="email" autocomplete="off"
+                                    placeholder="your-name@provider.com" required minlength="1" maxlength="250"
+                                    class="form-control form-control-sm"
+                                    [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                                    <div *ngIf="email.errors?.['required']">
+                                        This field is required.
+                                    </div>
+                                    <div *ngIf="email.errors?.['minlength']">
+                                        This field must have at least 1 character.
+                                    </div>
+                                    <div *ngIf="email.errors?.['maxlength']">
+                                        This field must have at most 250 characters.
+                                    </div>
+                                    <div
+                                        *ngIf="!email.errors?.['required'] && !email.errors?.['minlength'] && !email.errors?.['maxlength'] && email.errors?.['emailValidator']">
+                                        Invalid email format.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-2">
+                                <label for="password" class="form-label">Password:</label>
+                                <div class="input-group input-group-sm has-validation">
+                                    <input [type]="user.showPassword ? 'text' : 'password'" id="password" autocomplete="off"
+                                        name="password" formControlName="password" required minlength="15"
+                                        class="form-control form-control-sm"
+                                        [class.is-invalid]="password.invalid && (password.dirty || password.touched)">
+                                    <button type="button" class="btn btn-outline-secondary"
+                                        (click)="user.showPassword = !user.showPassword">
+                                        <i class="bi"
+                                            [ngClass]="{'bi-eye-fill': !user.showPassword, 'bi-eye-slash-fill': user.showPassword}">Show
+                                            Password</i>
+                                    </button>
+                                    <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                                        class="invalid-feedback">
+                                        <div *ngIf="password.errors?.['required']">
+                                            This field is required.
+                                        </div>
+                                        <div *ngIf="password.errors?.['minlength']">
+                                            This field must have at least 15 characters.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-2 d-grid">
+                                <button type="button" class="btn btn-sm btn-primary"
+                                    (click)="validate()">Register</button>
+                            </div>
+                            <div class="col mb-2 d-grid">
+                                <button type="button" class="btn btn-sm btn-primary"
+                                    (click)="fillForm()">Fill Form Value</button>
+                            </div>
+                            <div class="col mb-2 d-grid">
+                                <button type="button" class="btn btn-sm btn-primary"
+                                    (click)="resetForm()">Reset</button>
+                            </div>
+                            <div class="col mb-2 d-grid">
+                                <button type="button" class="btn btn-sm btn-primary"
+                                    (click)="getDataFromApi()">Get Data</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="container-fluid py-3">
+                                <h3>API Response</h3>
+                                <div class="container">
+                <table class="table table-primary table-striped">
+                    <caption>List of Data</caption>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Color</th>
+                            <th>Name</th>
+                            <th>Year</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let res of response">
+                            <td>{{res.id}}</td>
+                            <td>{{res.color}}</td>
+                            <td>{{res.name}}</td>
+                            <td>{{res.year}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 vl">
+        <div class="container-fluid py-3">
+            <h3>User Informations</h3>
+            <div class="container">
+                <table class="table table-primary table-striped">
+                    <caption>List of users</caption>
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Nick Name</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of userData">
+                            <td>{{data.name}}</td>
+                            <td>{{data.nickname}}</td>
+                            <td>{{data.email}}</td>
+                            <td>{{data.password}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

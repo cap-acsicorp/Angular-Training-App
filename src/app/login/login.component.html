@@ -1,0 +1,85 @@
+
+<!-- <div>
+    <h3 class="background-color" [ngClass]="{'background-color' : applyClass == 1, 'background-color-blue': applyClass == '' }">{{headerName}}</h3>
+</div>
+<div>
+    <label *ngIf="name">Your name is : {{name}} </label><br>
+    <input type="text"  [(ngModel)]="name" (input)="callMe()">
+</div>
+<div *ngFor="let item of dataset;index as i">
+    <label><b [ngClass]="{'background-color' : i%2 == 1, 'background-color-blue': i%2 != 1 }">Item No {{i}} is:</b> {{item.key | lowercase }} - {{item.value | percent}}<br></label>
+</div>
+
+<div>
+    <label>Date is : </label> {{todayDate | lowercase | date | uppercase}}
+</div> -->
+<!-- <div>
+    <label>Enter Data</label>
+    <input type="text" value="" [(ngModel)]="name">
+</div>
+<input type="button" value="Click" (click)="onClick()"> -->
+<!-- main app container -->
+<div class="jumbotron">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				<h3>Template-Driven Form</h3>
+				<form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+					<div class="form-group">
+						<label for="firstName">First Name</label>
+                        <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required />
+                        <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
+                            <div *ngIf="!model.firstName">First Name is required</div>
+                        </div>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required />
+                        <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
+                            <div *ngIf="!model.lastName">Last Name is required</div>
+                        </div>
+                    </div><br>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" name="password" [(ngModel)]="model.password" #password="ngModel" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }" required minlength="6" />
+                        <div *ngIf="f.submitted && password.invalid" class="invalid-feedback">
+                            <div *ngIf="!model.password">Password is required</div>
+                            <div *ngIf="model.password">Password must be at least 6 characters</div>
+                        </div>
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="optEmail">Opt for Emails</label>
+                        <select #optEmail="ngModel" class="form-control" id="inputAlert" name="optEmail" [(ngModel)]="model.optEmail" [ngClass]="{ 'is-invalid': f.submitted && optEmail.invalid }" required>
+                          <option value="undefined" disabled selected hidden>Select</option>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                        <div *ngIf="f.submitted && optEmail.invalid" class="invalid-feedback">
+                            <div *ngIf="!model.optEmail">Opt Email is required</div>
+                        </div>
+                    </div><br>
+
+                    <div class="form-group" *ngIf="optEmail.value == 'Yes'">
+                        <label for="emailOpt">Email Opted for Text</label>
+                        <input type="text" class="form-control" name="emailOptTxt" [(ngModel)]="model.emailOptTxt" #emailOpttxt="ngModel" [ngClass]="{ 'is-invalid': f.submitted && emailOpttxt.invalid }" required email />
+                        <div *ngIf="f.submitted && emailOpttxt.invalid" class="invalid-feedback">
+                            <div *ngIf="!model.emailOpttxt">Email Opted For is required</div>
+                        </div>
+                    </div><br>
+
+
+                    <div class="form-group">
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>====>>>>These are my form values ===>>></div><br>
+<p>{{model | json}}</p>
+
+
+

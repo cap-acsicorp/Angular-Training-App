@@ -1,0 +1,12 @@
+.img{
+    height: 48px;
+    background-color: #144287;
+}
+.bg-light{
+    background-color: #144287 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+}
+

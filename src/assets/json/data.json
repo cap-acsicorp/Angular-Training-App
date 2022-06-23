@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "id": 2,
+      "email": "Rajesh@mail.com",
+      "first_name": "Rajesh",
+      "last_name": "Singh",
+      "avatar": "http://www.gravatar.com/avatar/?d=mp"
+    },
+    {
+      "id": 3,
+      "email": "snegi@mail.com",
+      "first_name": "Surendra",
+      "last_name": "Singh",
+      "avatar": "http://www.gravatar.com/avatar/?d=mp"
+    },
+    {
+      "id": 4,
+      "email": "Sanjeev.sharma@mail.com",
+      "first_name": "Sanjeev",
+      "last_name": "Sharma",
+      "avatar": "http://www.gravatar.com/avatar/?d=mp"
+    },
+    {
+      "id": 5,
+      "email": "Enter Email",
+      "first_name": "Enter First Name",
+      "last_name": "Enter Last Name",
+      "avatar": "http://www.gravatar.com/avatar/?d=mp"
+    }
+  ]
+}
