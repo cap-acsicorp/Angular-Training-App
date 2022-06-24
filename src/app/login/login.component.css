@@ -10,9 +10,21 @@
 .pd-left{
     padding-left: 40%;
 }
+
+.pd-top{
+    padding-top: 8%;
+}
 .txt-decor{
     line-height: 5;
     font-size: xx-large;
     text-align: center;
     color: #fff;
+}
+
+.bg-img{
+    background-image: url("/assets/images/desktop-bg.jpg");
+    height: -webkit-fill-available !important;
+    width: -webkit-fill-available;
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }

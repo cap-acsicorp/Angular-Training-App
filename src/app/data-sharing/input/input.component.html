@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="container-fluid py-3">
+            <div class="container">
+                <h3>Input Components</h3>
+                <app-output [getInput] = "inputData" (getOutput)="getOutputItem($event)"></app-output>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 vl">
+        <div class="container-fluid py-3">
+            <div class="container">
+                <h3>Output Components</h3>
+                <strong class="text-primary">Output from Input Components</strong>
+                    <p class="text-primary"> {{outputData | currency : 'INR' : 'symbol-narrow'}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,16 +1,8 @@
-
-<!-- <div>
-  <b>Root Module loaded</b>
-  <p>Out from home-dashboard ===>>> {{outputData | currency : 'INR' : 'symbol-narrow'}}</p>
-</div>
-
-<b>Home home-dashboard module</b>
-<app-home-dashoard [getInput] = "inputData" (getOutput)="getOutputItem($event)"></app-home-dashoard> -->
-
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"> <img class="img" src="assets/images/logo.png"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -19,18 +11,35 @@
         <a class="nav-link" routerLink="/reactive-form">Reactive form</a>
         <a class="nav-link" routerLink="/template-driven-form">Template Driven Form</a>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             More
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" routerLink="/crud">HTTP Actions</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" routerLink="/data-share">Data Sharing (Input - Output)</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <!-- <li><a class="dropdown-item">Something else here</a></li> -->
           </ul>
-        </li>
+        </li>    
       </div>
-    </div>
+    </div> 
+    <form class="d-flex">
+      <strong class="nav-link username-bg">{{username}}</strong>
+      <img src="assets/images/user-logo.png" alt="Avatar" class="avatar">
+      <div class="navbar-nav" *ngIf="username">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+        </a>
+        <ul class="dropdown-menu mg-left" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" (click)="logout()">Log Out</a></li>
+        </ul>
+      </li>
+      </div>
+    </form>  
   </div>
 </nav>
 <div>

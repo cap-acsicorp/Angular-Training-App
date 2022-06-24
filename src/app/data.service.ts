@@ -8,10 +8,15 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 })
 export class DataService {
   testSubject$ = new BehaviorSubject<any>('data from service');
+  userName$ = new BehaviorSubject<any>('');
   constructor(private http: HttpClient) { }
 
   setTestData(data: any){
     this.testSubject$.next(data);
+  }
+
+  setUserName(data: any){
+    this.userName$.next(data);
   }
 
   getData(): Observable<any> {

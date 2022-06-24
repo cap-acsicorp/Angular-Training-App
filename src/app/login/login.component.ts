@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DataService } from '../data.service';
 
 @Component({
@@ -15,38 +16,21 @@ export class LoginComponent implements OnInit {
   model: any = {};
  
 
-  constructor(private dataService: DataService) { }
+  constructor(private router:Router,private dataService: DataService) {
+    sessionStorage.setItem('loggedinUser','');
+    this.dataService.setUserName('');
+   }
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.applyClass = 1;
-    }, 5000);
-    setTimeout(() => {
-      this.name = 'Adam';
-    }, 10000);
-    let count = 0;
-    const interval = setInterval(() => {
-      count++
-      if(count != 10){
-        this.dataset.push({key:'Roll Number:', value: count})
-      }else{
-        clearInterval(interval)
-      }  
-    },1000)
-    const date = new Date();
-    this.todayDate = date.toLocaleDateString();
-    
-  }
-  callMe(){
-    console.log('Hi your name is' + this.name);
-  }
+  ngOnInit(): void { }
 
   onClick(){
     this.dataService.setTestData(this.name);
   }
 
   onSubmit() {
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.model))
+    this.router.navigate(['/home'])
+    this.dataService.setUserName(this.model.userName);
+    sessionStorage.setItem('loggedinUser',this.model.userName);
   }
 
 }
