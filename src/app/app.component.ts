@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'testApp';
-  outputData: number = 0
-  inputData = 'Input from App component'
-  constructor(){
-    setTimeout(() => {
-      this.inputData = 'Changed data from root component';
-    }, 5000);
+  username: any;
+  constructor(private router:Router,private dataService: DataService){
+  this.username = sessionStorage.getItem('loggedinUser'); 
+  this.username ? this.dataService.setUserName(this.username) : '';
+  this.dataService.userName$.subscribe(username =>{ 
+    this.username = username;
+    })
   }
-  getOutputItem(event:any){
-    this.outputData = event;
+
+  logout(){
+    sessionStorage.setItem('loggedinUser','');
+    this.dataService.setUserName('')
+    this.router.navigate(['/login'])
   }
- 
 }
